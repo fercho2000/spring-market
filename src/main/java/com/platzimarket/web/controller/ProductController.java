@@ -2,10 +2,7 @@ package com.platzimarket.web.controller;
 
 import com.platzimarket.domain.Product;
 import com.platzimarket.domain.service.ProductServices;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +18,7 @@ public class ProductController {
     private ProductServices productServices;
 
     @GetMapping("/all")
-    @ApiOperation("Get all supermarket products")
+    @ApiOperation(value = "Get all supermarket products", authorizations = { @Authorization(value="JWT") })
     @ApiResponse(code = 200, message = "OK")
     public ResponseEntity<List<Product>> getAll() {
 
